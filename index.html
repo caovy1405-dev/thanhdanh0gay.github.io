@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Giới thiệu Nhóm</title>
-    <!-- Link Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
@@ -45,60 +44,213 @@
             max-width: 600px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.4);
             backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        .member-card h2 {
-            margin: 0 0 8px 0;
+        .member-card:hover {
+            transform: scale(1.03);
+        }
+
+        .avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+        }
+
+        .member-info h2 {
+            margin: 0 0 6px 0;
             font-size: 26px;
             font-weight: 500;
         }
 
-        .member-card p {
-            margin: 5px 0;
-            font-size: 18px;
-            font-weight: 400;
+        .profile-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
         }
 
-        a {
-            color: #ffd;
-            text-decoration: none;
+        .profile-box {
+            background: #222;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(255,255,255,0.3);
         }
 
-        a:hover {
-            text-decoration: underline;
+        .profile-box img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin-bottom: 15px;
         }
+
+        .close-btn {
+            margin-top: 20px;
+            background: #ff4444;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        a { color: #ffd; }
     </style>
 </head>
 <body>
     <div class="overlay">
         <h1>Giới thiệu Nhóm</h1>
 
-        <div class="member-card">
-            <h2>Võ Thành Danh</h2>
-            <p><b>Lớp:</b> 12A</p>
+        <div class="member-card" onclick="showProfile('danh')">
+            <img class="avatar" src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/images%20(1).jpg" />
+            <div class="member-info">
+                <h2>Võ Thành Danh</h2>
+                <p><b>Lớp:</b> 12A</p>
+            </div>
+        </div>
+
+        <div class="member-card" onclick="showProfile('ngan')">
+            <img class="avatar" src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/2b65b5b221ff5df58b2cbc2fc84c1022.jpg" />
+            <div class="member-info">
+                <h2>Phạm Yến Ngân</h2>
+                <p><b>Lớp:</b> 12A</p>
+            </div>
+        </div>
+
+        <div class="member-card" onclick="showProfile('vu')">
+            <img class="avatar" src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/images.jpg" />
+            <div class="member-info">
+                <h2>Nguyễn Phi Vũ</h2>
+                <p><b>Lớp:</b> 12A</p>
+            </div>
+        </div>
+
+        <div class="member-card" onclick="showProfile('vy')">
+            <img class="avatar" src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/654f6babf5f830d9b848f6b7_Funny20for2024.png" />
+            <div class="member-info">
+                <h2>Cao Ngô Anh Vy</h2>
+                <p><b>Lớp:</b> 12A</p>
+            </div>
         </div>
 
         <div class="member-card">
-            <h2>Phạm Yến Ngân</h2>
-            <p><b>Lớp:</b> 12A</p>
-        </div>
-
-        <div class="member-card">
-            <h2>Nguyễn Phi Vũ</h2>
-            <p><b>Lớp:</b> 12A</p>
-        </div>
-
-        <div class="member-card">
-            <h2>Cao Ngô Anh Vy</h2>
-            <p><b>Lớp:</b> 12A</p>
-        </div>
-
-        <div class="member-card">
-            <h2>Bài tập nhóm</h2>
-            <p><b>File 1:</b> <a href="#">Tải xuống</a></p>
-            <p><b>File 2:</b> <a href="#">Tải xuống</a></p>
-            <p><b>File 3:</b> <a href="#">Tải xuống</a></p>
+            <div class="member-info">
+                <h2>Bài tập nhóm</h2>
+                <p><b>Bài 9:</b> <a href="https://www.canva.com/design/DAG5zkSOVeQ/2QTafJ8vonkswk9oNSlczw/edit">Mở bài</a></p>
+                <p><b>Bài 12:</b> Nội dung đã được thiết kế theo yêu cầu bên dưới.</p>
+            </div>
         </div>
     </div>
+
+    <div id="profile-popup" class="profile-popup">
+        <div class="profile-box" id="profile-content"></div>
+    </div>
+
+<script>
+function showProfile(member) {
+    const profiles = {
+        danh: {
+            name: "Võ Thành Danh",
+            img: "https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/images%20(1).jpg",
+            desc: "Một thành viên năng động, luôn dẫn đầu trong mọi hoạt động của nhóm. Nhiệt tình - trách nhiệm - sáng tạo."
+        },
+        ngan: {
+            name: "Phạm Yến Ngân",
+            img: "https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/2b65b5b221ff5df58b2cbc2fc84c1022.jpg",
+            desc: "Luôn mang đến sự tinh tế và tỉ mỉ trong từng chi tiết. Là linh hồn thiết kế của nhóm."
+        },
+        vu: {
+            name: "Nguyễn Phi Vũ",
+            img: "https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/images.jpg",
+            desc: "Chuyên gia kỹ thuật với tư duy logic mạnh mẽ. Giải quyết vấn đề nhanh và hiệu quả."
+        },
+        vy: {
+            name: "Cao Ngô Anh Vy",
+            img: "https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/654f6babf5f830d9b848f6b7_Funny20for2024.png",
+            desc: "Nguồn năng lượng tích cực của cả nhóm, luôn mang đến tinh thần đoàn kết và sáng tạo."
+        }
+    };
+
+    const popup = document.getElementById('profile-popup');
+    const content = document.getElementById('profile-content');
+    const p = profiles[member];
+
+    content.innerHTML = `
+        <img src="${p.img}" />
+        <h2>${p.name}</h2>
+        <p>${p.desc}</p>
+        <button class="close-btn" onclick="closeProfile()">Đóng</button>
+    `;
+
+    popup.style.display = 'flex';
+}
+
+function closeProfile() {
+    document.getElementById('profile-popup').style.display = 'none';
+}
+</script>
+
+
+
+<!-- Popup Bài 12 cập nhật nội dung mới -->
+<div class="popup" id="bai12Popup">
+  <div class="popup-box">
+    <h2>Bài 12 – Biểu mẫu Web</h2>
+    <div style="text-align:left; max-height:300px; overflow:auto; font-size:14px;">
+      BIỂU MẪU WEB:<br>
+      Khái niệm: biểu mẫu web hay phần tử form của HTML là công cụ để thu thập dữ liệu, được dùng để nhập vào form và xử lí tại chỗ hoặc gửi về máy chủ...<br><br>
+      <strong>Cấu tạo:</strong><br>
+      - Biểu mẫu hiển thị trên web tạo bởi HTML.<br>
+      - Ứng dụng/script xử lí dữ liệu nằm trên máy chủ.<br><br>
+      <strong>Cấu trúc form:</strong><br>
+      &lt;form&gt;<br>
+      &nbsp;&nbsp;các phần tử của biểu mẫu<br>
+      &lt;/form&gt;<br><br>
+      Các phần tử: input, label, select, textarea, fieldset, legend...<br><br>
+      <strong>label:</strong><br>
+      &lt;label for="id_input"&gt;Tên nhãn&lt;/label&gt;<br>
+      → Nhấn vào nhãn sẽ focus vào input tương ứng.<br><br>
+      <strong>input:</strong><br>
+      &lt;input id="id" type="loại" name="tên"&gt;<br>
+      name dùng để xử lí dữ liệu – gửi lên máy chủ.<br><br>
+      <strong>select:</strong><br>
+      &lt;select id="id" name="tên"&gt;<br>
+      &nbsp;&nbsp;&lt;option&gt;...&lt;/option&gt;<br>
+      &lt;/select&gt;<br><br>
+      <strong>textarea:</strong><br>
+      &lt;textarea rows="..." cols="..."&gt;&lt;/textarea&gt;<br><br>
+      <strong>fieldset:</strong> Nhóm các phần tử theo khung.<br><br>
+      <strong>THỰC HÀNH:</strong><br>
+      Nhiệm vụ 1 – Tạo biểu mẫu thông tin món ăn.<br>
+      Nhiệm vụ 2 – Form đăng ký thi tốt nghiệp.<br><br>
+      <strong>LUYỆN TẬP – Form cơ bản, select, textarea, input text/email/date...</strong><br><br>
+      <strong>VẬN DỤNG – Ví dụ 1 & 2 đầy đủ cấu trúc HTML.</strong><br><br>
+    </div>
+    <div class="close-btn" onclick="document.getElementById('bai12Popup').style.display='none'">Đóng</div>
+  </div>
+</div>
+
+<script>
+function showBai12(){
+  document.getElementById('bai12Popup').style.display='flex';
+}
+</script>
+
 </body>
 </html>
