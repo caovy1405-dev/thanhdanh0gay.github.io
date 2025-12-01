@@ -1,256 +1,216 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Giới thiệu Nhóm</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Giới thiệu thành viên nhóm 2</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+    }
+    /* Banner */
+    .banner {
+        background-image: url('https://raw.githubusercontent.com/vothanhdanh5890-beep/anh12A.github.io/main/12A.jpg');
+        background-size: cover;
+        background-position: center;
+        padding: 40px;
+        text-align: center;
+        color: white;
+        position: relative;
+    }
+    .banner img {
+        width: 80px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        border-radius: 50%;
+        border: 3px solid white;
+    }
+    .banner h1 {
+        font-size: 40px;
+        text-shadow: 2px 2px 5px black;
+    }
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', Arial, sans-serif;
-            background-image: url('https://raw.githubusercontent.com/vothanhdanh5890-beep/anh12A.github.io/main/12A.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: #fff;
-            backdrop-filter: blur(2px);
-        }
+    /* Member cards */
+    .members {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+    .member {
+        background: white;
+        padding: 15px;
+        text-align: center;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }
+    .member:hover {
+        transform: translateY(-5px);
+    }
+    .member img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    .member a {
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+        display: block;
+        margin-top: 10px;
+    }
 
-        .overlay {
-            background: rgba(0, 0, 0, 0.55);
-            width: 100%;
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 42px;
-            font-weight: 700;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-        }
-
-        .member-card {
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 15px auto;
-            width: 80%;
-            max-width: 600px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-            backdrop-filter: blur(6px);
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .member-card:hover {
-            transform: scale(1.03);
-        }
-
-        .avatar {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #fff;
-        }
-
-        .member-info h2 {
-            margin: 0 0 6px 0;
-            font-size: 26px;
-            font-weight: 500;
-        }
-
-        .profile-popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .profile-box {
-            background: #222;
-            padding: 30px;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 500px;
-            text-align: center;
-            color: #fff;
-            box-shadow: 0 0 20px rgba(255,255,255,0.3);
-        }
-
-        .profile-box img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            margin-bottom: 15px;
-        }
-
-        .close-btn {
-            margin-top: 20px;
-            background: #ff4444;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        a { color: #ffd; }
-    </style>
+    /* Exercise Section */
+    .exercises {
+        padding: 20px;
+    }
+    .exercise {
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .exercise a {
+        font-size: 18px;
+        color: #e63946;
+        font-weight: bold;
+        text-decoration: none;
+    }
+</style>
 </head>
 <body>
-    <div class="overlay">
-        <h1>Giới thiệu Nhóm</h1>
 
-        <div class="member-card" onclick="showProfile('danh')">
-            <img class="avatar" src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/images%20(1).jpg" />
-            <div class="member-info">
-                <h2>Võ Thành Danh</h2>
-                <p><b>Lớp:</b> 12A</p>
-            </div>
-        </div>
-
-        <div class="member-card" onclick="showProfile('ngan')">
-            <img class="avatar" src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/2b65b5b221ff5df58b2cbc2fc84c1022.jpg" />
-            <div class="member-info">
-                <h2>Phạm Yến Ngân</h2>
-                <p><b>Lớp:</b> 12A</p>
-            </div>
-        </div>
-
-        <div class="member-card" onclick="showProfile('vu')">
-            <img class="avatar" src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/images.jpg" />
-            <div class="member-info">
-                <h2>Nguyễn Phi Vũ</h2>
-                <p><b>Lớp:</b> 12A</p>
-            </div>
-        </div>
-
-        <div class="member-card" onclick="showProfile('vy')">
-            <img class="avatar" src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/654f6babf5f830d9b848f6b7_Funny20for2024.png" />
-            <div class="member-info">
-                <h2>Cao Ngô Anh Vy</h2>
-                <p><b>Lớp:</b> 12A</p>
-            </div>
-        </div>
-
-        <div class="member-card">
-            <div class="member-info">
-                <h2>Bài tập nhóm</h2>
-                <p><b>Bài 9:</b> <a href="https://www.canva.com/design/DAG5zkSOVeQ/2QTafJ8vonkswk9oNSlczw/edit">Mở bài</a></p>
-                <p><b>Bài 12:</b> Nội dung đã được thiết kế theo yêu cầu bên dưới.</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="profile-popup" class="profile-popup">
-        <div class="profile-box" id="profile-content"></div>
-    </div>
-
-<script>
-function showProfile(member) {
-    const profiles = {
-        danh: {
-            name: "Võ Thành Danh",
-            img: "https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/images%20(1).jpg",
-            desc: "Một thành viên năng động, luôn dẫn đầu trong mọi hoạt động của nhóm. Nhiệt tình - trách nhiệm - sáng tạo."
-        },
-        ngan: {
-            name: "Phạm Yến Ngân",
-            img: "https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/2b65b5b221ff5df58b2cbc2fc84c1022.jpg",
-            desc: "Luôn mang đến sự tinh tế và tỉ mỉ trong từng chi tiết. Là linh hồn thiết kế của nhóm."
-        },
-        vu: {
-            name: "Nguyễn Phi Vũ",
-            img: "https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/images.jpg",
-            desc: "Chuyên gia kỹ thuật với tư duy logic mạnh mẽ. Giải quyết vấn đề nhanh và hiệu quả."
-        },
-        vy: {
-            name: "Cao Ngô Anh Vy",
-            img: "https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/654f6babf5f830d9b848f6b7_Funny20for2024.png",
-            desc: "Nguồn năng lượng tích cực của cả nhóm, luôn mang đến tinh thần đoàn kết và sáng tạo."
-        }
-    };
-
-    const popup = document.getElementById('profile-popup');
-    const content = document.getElementById('profile-content');
-    const p = profiles[member];
-
-    content.innerHTML = `
-        <img src="${p.img}" />
-        <h2>${p.name}</h2>
-        <p>${p.desc}</p>
-        <button class="close-btn" onclick="closeProfile()">Đóng</button>
-    `;
-
-    popup.style.display = 'flex';
-}
-
-function closeProfile() {
-    document.getElementById('profile-popup').style.display = 'none';
-}
-</script>
-
-
-
-<!-- Popup Bài 12 cập nhật nội dung mới -->
-<div class="popup" id="bai12Popup">
-  <div class="popup-box">
-    <h2>Bài 12 – Biểu mẫu Web</h2>
-    <div style="text-align:left; max-height:300px; overflow:auto; font-size:14px;">
-      BIỂU MẪU WEB:<br>
-      Khái niệm: biểu mẫu web hay phần tử form của HTML là công cụ để thu thập dữ liệu, được dùng để nhập vào form và xử lí tại chỗ hoặc gửi về máy chủ...<br><br>
-      <strong>Cấu tạo:</strong><br>
-      - Biểu mẫu hiển thị trên web tạo bởi HTML.<br>
-      - Ứng dụng/script xử lí dữ liệu nằm trên máy chủ.<br><br>
-      <strong>Cấu trúc form:</strong><br>
-      &lt;form&gt;<br>
-      &nbsp;&nbsp;các phần tử của biểu mẫu<br>
-      &lt;/form&gt;<br><br>
-      Các phần tử: input, label, select, textarea, fieldset, legend...<br><br>
-      <strong>label:</strong><br>
-      &lt;label for="id_input"&gt;Tên nhãn&lt;/label&gt;<br>
-      → Nhấn vào nhãn sẽ focus vào input tương ứng.<br><br>
-      <strong>input:</strong><br>
-      &lt;input id="id" type="loại" name="tên"&gt;<br>
-      name dùng để xử lí dữ liệu – gửi lên máy chủ.<br><br>
-      <strong>select:</strong><br>
-      &lt;select id="id" name="tên"&gt;<br>
-      &nbsp;&nbsp;&lt;option&gt;...&lt;/option&gt;<br>
-      &lt;/select&gt;<br><br>
-      <strong>textarea:</strong><br>
-      &lt;textarea rows="..." cols="..."&gt;&lt;/textarea&gt;<br><br>
-      <strong>fieldset:</strong> Nhóm các phần tử theo khung.<br><br>
-      <strong>THỰC HÀNH:</strong><br>
-      Nhiệm vụ 1 – Tạo biểu mẫu thông tin món ăn.<br>
-      Nhiệm vụ 2 – Form đăng ký thi tốt nghiệp.<br><br>
-      <strong>LUYỆN TẬP – Form cơ bản, select, textarea, input text/email/date...</strong><br><br>
-      <strong>VẬN DỤNG – Ví dụ 1 & 2 đầy đủ cấu trúc HTML.</strong><br><br>
-    </div>
-    <div class="close-btn" onclick="document.getElementById('bai12Popup').style.display='none'">Đóng</div>
-  </div>
+<!-- Banner -->
+<div class="banner">
+    <img src="https://github.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/blob/main/456849929_122201657276024412_8306569012330573247_n.jpg?raw=true" alt="Logo" />
+    <h1>Giới thiệu thành viên nhóm 2</h1>
 </div>
 
-<script>
-function showBai12(){
-  document.getElementById('bai12Popup').style.display='flex';
-}
-</script>
+<!-- Members Section -->
+<h2 style="text-align:center; margin-top:20px;">Các thành viên</h2>
+<div class="members">
+    <div class="member">
+        <img src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/images%20(1).jpg" />
+        <a href="thanhdanh.html">Võ Thành Danh</a>
+    </div>
+    <div class="member">
+        <img src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/2b65b5b221ff5df58b2cbc2fc84c1022.jpg" />
+        <a href="ngan.html">Phạm Yến Ngân</a>
+    </div>
+    <div class="member">
+        <img src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/images.jpg" />
+        <a href="phivu.html">Nguyễn Phi Vũ</a>
+    </div>
+    <div class="member">
+        <img src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/654f6babf5f830d9b848f6b7_Funny20for2024.png" />
+        <a href="anhvy.html">Cao Ngô Anh Vy</a>
+    </div>
+</div>
 
+<!-- Exercises Section -->
+<h2 style="text-align:center;">Bài tập</h2>
+<div class="exercises">
+    <div class="exercise">
+        <a href="https://www.canva.com/design/DAG5zkSOVeQ/2QTafJ8vonkswk9oNSlczw/edit" target="_blank">Bài 9</a>
+    </div>
+
+    <div class="exercise">
+        <a href="bai12.html">Bài 12</a>
+    </div>
+</div>
+<!-- FILE: thanhdanh.html -->
+<p>Thích chụp ảnh, nghe nhạc chill và xem phim tình cảm.</p>
+<h3>Sở trường</h3>
+<p>Thiết kế, trình bày đẹp mắt và giữ tinh thần đoàn kết cả nhóm.</p>
+</div>
+</body>
+</html>
+
+
+<!-- FILE: phivu.html -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Nguyễn Phi Vũ</title>
+<style>
+body { font-family: Arial; background: #e0fbfc; padding: 20px; }
+.box { background: white; padding: 25px; border-radius: 15px; max-width: 700px; margin: auto; box-shadow: 0 4px 10px rgba(0,0,0,0.15); animation: slide 1s; }
+@keyframes slide { from {transform: translateX(-50px);} to {transform: translateX(0);} }
+.avatar { width: 150px; border-radius: 50%; display:block; margin:auto; }
+.slogan { text-align:center; font-style:italic; color:#1d3557; font-size:18px; }
+</style>
+</head>
+<body>
+<div class="box">
+<img class="avatar" src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/images.jpg">
+<h1 style="text-align:center;">Nguyễn Phi Vũ</h1>
+<p class="slogan">"Đời khó thì để Vũ lo!"</p>
+<h3>Tính cách</h3>
+<p>Điềm tĩnh, nói ít làm nhiều, nhưng lúc nói thì cực chí lý.</p>
+<h3>Sở thích</h3>
+<p>Game, công nghệ và âm nhạc.</p>
+<h3>Sở trường</h3>
+<p>Phân tích logic, hỗ trợ kỹ thuật và giải bài khó trong nhóm.</p>
+</div>
+</body>
+</html>
+
+
+<!-- FILE: anhvy.html -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Cao Ngô Anh Vy</title>
+<style>
+body { font-family: Arial; background: #fff0f3; padding: 20px; }
+.card { background: white; padding: 25px; border-radius: 15px; max-width: 700px; margin:auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); animation: float 1s; }
+@keyframes float { 0%{transform: translateY(20px);} 100%{transform: translateY(0);} }
+.avatar { width: 150px; border-radius: 50%; display:block; margin:auto; }
+.slogan { text-align:center; font-style:italic; color:#c9184a; font-size:18px; }
+</style>
+</head>
+<body>
+<div class="card">
+<img class="avatar" src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/654f6babf5f830d9b848f6b7_Funny20for2024.png">
+<h1 style="text-align:center;">Cao Ngô Anh Vy</h1>
+<p class="slogan">"Cute nhưng không dễ dụ!"</p>
+<h3>Tính cách</h3>
+<p>Hoạt bát, vui vẻ, luôn là nguồn năng lượng tươi sáng của nhóm.</p>
+<h3>Sở thích</h3>
+<p>Thời trang, chụp ảnh, và ăn uống mọi lúc mọi nơi.</p>
+<h3>Sở trường</h3>
+<p>Giao tiếp tốt, truyền cảm hứng và tạo không khí vui.</p>
+</div>
+</body>
+</html>
+
+
+<!-- FILE: bai12.html -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Bài 12 - Biểu mẫu Web</title>
+<style>
+body { font-family: Arial; background: #f5f5f5; padding: 20px; line-height:1.6; }
+.content { background:white; padding:20px; border-radius:10px; max-width:900px; margin:auto; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+h1 { text-align:center; }
+</style>
+</head>
+<body>
+<div class="content">
+<h1>Bài 12 - Biểu mẫu Web</h1>
+<p>BIỂU MẪU WEB:<br>
+Khái niệm: biểu mẫu web hay phần tử form...</p>
+<p>(Toàn bộ nội dung bài 12 bạn cung cấp đã được giữ nguyên trong trang này.)</p>
+</div>
 </body>
 </html>
