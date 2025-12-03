@@ -1,21 +1,58 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Giới thiệu thành viên nhóm 2</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nhóm 2 - Giới thiệu thành viên</title>
+
 <style>
+    :root {
+        --primary: #1B3B6F;
+        --secondary: #FFC857;
+        --accent: #4ABDAC;
+        --bg: #F9F9F9;
+        --text-dark: #0D1B2A;
+        --card-radius: 16px;
+        --shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
     body {
         margin: 0;
-        font-family: Arial, sans-serif;
-        background: #f4f4f4;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text-dark);
+    }
+
+    /* Navbar */
+    nav {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        padding: 15px 0;
+        background: var(--primary);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    nav a {
+        color: var(--secondary);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        transition: 0.3s;
+    }
+
+    nav a:hover {
+        color: white;
+        transform: scale(1.05);
     }
 
     /* Banner */
     .banner {
         position: relative;
         width: 100%;
-        height: 300px;
+        height: 320px;
         background-image: url("https://github.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/blob/main/unnamed.jpg?raw=true");
         background-size: cover;
         background-position: center;
@@ -23,71 +60,119 @@
         justify-content: center;
         align-items: center;
         color: white;
-        font-size: 40px;
+        font-size: 36px;
         font-weight: bold;
-        text-shadow: 2px 2px 8px #000;
-        overflow: hidden;
+        text-shadow: 2px 2px 6px #000;
     }
 
-    /* Logo góc trái */
-    .logo {
+    .banner .logo {
         position: absolute;
         top: 20px;
         left: 20px;
         width: 80px;
         height: 80px;
         border-radius: 50%;
+        border: 3px solid var(--secondary);
     }
 
-    /* Hiệu ứng mưa tuyết */
-    .snow {
-        position: absolute;
-        top: -10px;
-        width: 10px;
-        height: 10px;
-        background: white;
-        border-radius: 50%;
-        opacity: 0.8;
-        animation: fall 5s linear infinite;
+    /* Section titles */
+    h2 {
+        text-align: center;
+        font-size: 28px;
+        margin: 40px 0 20px;
+        color: var(--primary);
     }
 
-    @keyframes fall {
-        from { transform: translateY(0); }
-        to { transform: translateY(400px); }
-    }
-
-    /* Danh sách thành viên */
+    /* Members grid */
     .members {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        padding: 30px;
-        text-align: center;
+        gap: 25px;
+        padding: 0 40px 50px;
     }
 
     .member {
         background: white;
+        border-radius: var(--card-radius);
+        box-shadow: var(--shadow);
         padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        transition: 0.3s;
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
         cursor: pointer;
     }
 
     .member:hover {
-        transform: scale(1.05);
+        transform: translateY(-6px);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.2);
     }
 
     .member img {
         width: 120px;
         height: 120px;
-        object-fit: cover;
         border-radius: 50%;
-        margin-bottom: 10px;
+        object-fit: cover;
+        margin-bottom: 12px;
+        border: 3px solid var(--accent);
+    }
+
+    .member h3 {
+        margin: 0;
+        font-size: 18px;
+        color: var(--primary);
+    }
+
+    /* Exercises section */
+    .exercises {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 25px;
+        padding-bottom: 50px;
+    }
+
+    .exercise {
+        width: 130px;
+        height: 130px;
+        background: var(--secondary);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: var(--card-radius);
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        color: var(--primary);
+        box-shadow: var(--shadow);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .exercise:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    /* Footer */
+    footer {
+        text-align: center;
+        padding: 15px;
+        background: var(--primary);
+        color: var(--secondary);
+        font-size: 14px;
+    }
+
+    @media (max-width: 500px) {
+        .banner { font-size: 24px; }
+        .exercise { width: 100px; height: 100px; font-size: 16px; }
     }
 </style>
 </head>
 <body>
+
+<!-- Navbar -->
+<nav>
+    <a href="#members">Thành viên</a>
+    <a href="#exercises">Bài tập</a>
+</nav>
 
 <!-- Banner -->
 <div class="banner">
@@ -95,52 +180,38 @@
     Giới thiệu thành viên nhóm 2
 </div>
 
-<script>
-    // Tạo hiệu ứng mưa tuyết
-    for (let i = 0; i < 50; i++) {
-        let snow = document.createElement("div");
-        snow.className = "snow";
-        snow.style.left = Math.random() * window.innerWidth + "px";
-        snow.style.animationDuration = (3 + Math.random() * 5) + "s";
-        snow.style.opacity = Math.random();
-        document.querySelector('.banner').appendChild(snow);
-    }
-</script>
-
-<!-- Phần giới thiệu thành viên -->
-<h2 style="text-align:center; padding-top:20px;">Thành viên nhóm</h2>
+<!-- Members section -->
+<h2 id="members">Thành viên nhóm</h2>
 <div class="members">
-
     <div class="member" onclick="location.href='https://vothanhdanh5890-beep.github.io/thanhdanh.github.io/'">
         <img src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/images%20(1).jpg" />
         <h3>Võ Thành Danh</h3>
     </div>
-
     <div class="member" onclick="location.href='https://yenngan1234.github.io/yenngan.github.io/'">
         <img src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/2b65b5b221ff5df58b2cbc2fc84c1022.jpg" />
         <h3>Phạm Yến Ngân</h3>
     </div>
-
     <div class="member" onclick="location.href='https://ngpvu208.github.io/ngpvu2008.github.io/'">
         <img src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/images.jpg" />
         <h3>Nguyễn Phi Vũ</h3>
     </div>
-
     <div class="member" onclick="location.href='https://caovy1405-dev.github.io/CaoVy.github.io/'">
         <img src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/654f6babf5f830d9b848f6b7_Funny20for2024.png" />
         <h3>Cao Ngô Anh Vy</h3>
     </div>
-
 </div>
 
-<!-- Phần bài tập -->
-<h2 style="text-align:center; padding:20px 0;">Bài tập</h2>
-<div class="exercises" style="display:flex; justify-content:center; gap:20px; padding-bottom:40px;">
-    <div class="exercise" style="width:120px; height:120px; background:#ffe680; display:flex; justify-content:center; align-items:center; border-radius:12px; font-size:20px; font-weight:bold; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.1);">Bài 9</div>
-    <div class="exercise" style="width:120px; height:120px; background:#ffb3b3; display:flex; justify-content:center; align-items:center; border-radius:12px; font-size:20px; font-weight:bold; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.1);">Bài 10</div>
-    <div class="exercise" style="width:120px; height:120px; background:#b3ecff; display:flex; justify-content:center; align-items:center; border-radius:12px; font-size:20px; font-weight:bold; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.1);">Bài 11</div>
+<!-- Exercises section -->
+<h2 id="exercises">Bài tập</h2>
+<div class="exercises">
+    <div class="exercise" onclick="alert('Bài 9')">Bài 9</div>
+    <div class="exercise" onclick="alert('Bài 10')">Bài 10</div>
+    <div class="exercise" onclick="alert('Bài 11')">Bài 11</div>
 </div>
+
+<footer>
+    © 2025 - Nhóm 2 | Lớp 12 Anh
+</footer>
 
 </body>
 </html>
-
