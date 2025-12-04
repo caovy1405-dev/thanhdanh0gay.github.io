@@ -6,164 +6,238 @@
 <title>Nhóm 2 - Giới thiệu thành viên</title>
 
 <style>
-    :root {
-        --primary: #1B3B6F;
-        --secondary: #FFC857;
-        --accent: #4ABDAC;
-        --bg: #F9F9F9;
-        --text-dark: #0D1B2A;
-        --card-radius: 16px;
-        --shadow: 0 6px 20px rgba(0,0,0,0.15);
-    }
+/* ============================= */
+/* THEME COLORS */
+/* ============================= */
+:root {
+    --primary: #1B3B6F;
+    --secondary: #FFC857;
+    --accent: #4ABDAC;
+    --bg: #F4F7FB;
+    --text-dark: #0D1B2A;
+    --card-radius: 20px;
+    --shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
 
-    body {
-        margin: 0;
-        font-family: "Segoe UI", Arial, sans-serif;
-        background: var(--bg);
-        color: var(--text-dark);
-    }
+/* ============================= */
+/* GLOBAL */
+/* ============================= */
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text-dark);
+    animation: fadein 0.8s ease;
+}
 
-    /* Navbar */
-    nav {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        padding: 15px 0;
-        background: var(--primary);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-    }
+@keyframes fadein {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-    nav a {
-        color: var(--secondary);
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 16px;
-        transition: 0.3s;
-    }
+/* ============================= */
+/* NAVBAR */
+/* ============================= */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    padding: 16px 0;
+    background: rgba(27, 59, 111, 0.9);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 
-    nav a:hover {
-        color: white;
-        transform: scale(1.05);
-    }
+nav a {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 17px;
+    transition: 0.25s;
+}
 
-    /* Banner */
-    .banner {
-        position: relative;
-        width: 100%;
-        height: 320px;
-        background-image: url("https://github.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/blob/main/unnamed.jpg?raw=true");
-        background-size: cover;
-        background-position: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        font-size: 36px;
-        font-weight: bold;
-        text-shadow: 2px 2px 6px #000;
-    }
+nav a:hover {
+    color: white;
+    transform: translateY(-2px);
+}
 
-    .banner .logo {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        border: 3px solid var(--secondary);
-    }
+/* ============================= */
+/* BANNER */
+/* ============================= */
+.banner {
+    position: relative;
+    width: 100%;
+    height: 330px;
+    background-image: url("https://github.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/blob/main/unnamed.jpg?raw=true");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    /* Section titles */
-    h2 {
-        text-align: center;
-        font-size: 28px;
-        margin: 40px 0 20px;
-        color: var(--primary);
-    }
+    color: white;
+    font-size: 38px;
+    font-weight: 700;
+    text-shadow: 2px 3px 8px black;
+}
 
-    /* Members grid */
-    .members {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 25px;
-        padding: 0 40px 50px;
-    }
+/* Banner overlay */
+.banner::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.55));
+    top: 0;
+    left: 0;
+}
 
-    .member {
-        background: white;
-        border-radius: var(--card-radius);
-        box-shadow: var(--shadow);
-        padding: 20px;
-        text-align: center;
-        transition: transform 0.3s, box-shadow 0.3s;
-        cursor: pointer;
-    }
+.banner .logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    border: 3px solid var(--secondary);
+    z-index: 2;
+}
 
-    .member:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 12px 28px rgba(0,0,0,0.2);
-    }
+.banner span {
+    position: relative;
+    z-index: 2;
+}
 
-    .member img {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-bottom: 12px;
-        border: 3px solid var(--accent);
-    }
+/* ============================= */
+/* SECTION TITLE */
+/* ============================= */
+h2 {
+    text-align: center;
+    font-size: 30px;
+    margin: 45px 0 25px;
+    color: var(--primary);
+    letter-spacing: 0.5px;
+}
 
-    .member h3 {
-        margin: 0;
-        font-size: 18px;
-        color: var(--primary);
-    }
+/* ============================= */
+/* MEMBERS */
+/* ============================= */
+.members {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 28px;
+    padding: 0 40px 60px;
+}
 
-    /* Exercises section */
-    .exercises {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 25px;
-        padding-bottom: 50px;
-    }
+/* Member card with glass effect */
+.member {
+    background: rgba(255,255,255,0.75);
+    border-radius: var(--card-radius);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+    border: 1px solid rgba(255,255,255,0.4);
+    cursor: pointer;
+    position: relative;
+}
 
-    .exercise {
-        width: 130px;
-        height: 130px;
-        background: var(--secondary);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: var(--card-radius);
-        font-size: 20px;
-        font-weight: bold;
-        cursor: pointer;
-        color: var(--primary);
-        box-shadow: var(--shadow);
-        transition: transform 0.3s, box-shadow 0.3s;
-    }
+/* animated border */
+.member::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, var(--accent), var(--secondary));
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: 0.3s;
+}
 
-    .exercise:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
+.member:hover::before {
+    opacity: 1;
+}
 
-    /* Footer */
-    footer {
-        text-align: center;
-        padding: 15px;
-        background: var(--primary);
-        color: var(--secondary);
-        font-size: 14px;
-    }
+.member:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25);
+}
 
-    @media (max-width: 500px) {
-        .banner { font-size: 24px; }
-        .exercise { width: 100px; height: 100px; font-size: 16px; }
-    }
+.member img {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 12px;
+    border: 3px solid var(--accent);
+}
+
+.member h3 {
+    margin-top: 8px;
+    font-size: 19px;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* ============================= */
+/* EXERCISES */
+/* ============================= */
+.exercises {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding-bottom: 60px;
+}
+
+.exercise {
+    width: 140px;
+    height: 140px;
+    border-radius: var(--card-radius);
+    background: var(--secondary);
+    color: var(--primary);
+    font-size: 22px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow);
+    transition: 0.35s;
+}
+
+/* Exercise hover: rotate + lift */
+.exercise:hover {
+    transform: translateY(-8px) rotate(-3deg);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25);
+}
+
+/* ============================= */
+/* FOOTER */
+/* ============================= */
+footer {
+    text-align: center;
+    padding: 18px;
+    background: var(--primary);
+    color: var(--secondary);
+    font-size: 14px;
+    letter-spacing: 0.4px;
+}
+
+/* ============================= */
+/* MOBILE */
+/* ============================= */
+@media (max-width: 500px) {
+    .banner { font-size: 26px; height: 260px; }
+    .exercise { width: 110px; height: 110px; font-size: 18px; }
+}
 </style>
 </head>
 <body>
@@ -177,31 +251,35 @@
 <!-- Banner -->
 <div class="banner">
     <img class="logo" src="https://github.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/blob/main/456849929_122201657276024412_8306569012330573247_n.jpg?raw=true" />
-    Giới thiệu thành viên nhóm 2
+    <span>Giới thiệu thành viên nhóm 2</span>
 </div>
 
-<!-- Members section -->
+<!-- Members -->
 <h2 id="members">Thành viên nhóm</h2>
 <div class="members">
+
     <div class="member" onclick="location.href='https://vothanhdanh5890-beep.github.io/thanhdanh.github.io/'">
-        <img src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/images%20(1).jpg" />
+        <img src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/images%20(1).jpg">
         <h3>Võ Thành Danh</h3>
     </div>
+
     <div class="member" onclick="location.href='https://yenngan1234.github.io/yenngan.github.io/'">
-        <img src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/2b65b5b221ff5df58b2cbc2fc84c1022.jpg" />
+        <img src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/2b65b5b221ff5df58b2cbc2fc84c1022.jpg">
         <h3>Phạm Yến Ngân</h3>
     </div>
+
     <div class="member" onclick="location.href='https://ngpvu208.github.io/ngpvu2008.github.io/'">
-        <img src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/images.jpg" />
+        <img src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/images.jpg">
         <h3>Nguyễn Phi Vũ</h3>
     </div>
+
     <div class="member" onclick="location.href='https://caovy1405-dev.github.io/CaoVy.github.io/'">
-        <img src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/654f6babf5f830d9b848f6b7_Funny20for2024.png" />
+        <img src="https://raw.githubusercontent.com/vothanhdanh5890-beep/thanhdanh0gay.github.io/refs/heads/main/654f6babf5f830d9b848f6b7_Funny20for2024.png">
         <h3>Cao Ngô Anh Vy</h3>
     </div>
 </div>
 
-<!-- Exercises section -->
+<!-- Exercises -->
 <h2 id="exercises">Bài tập</h2>
 <div class="exercises">
     <div class="exercise" onclick="alert('Bài 9')">Bài 9</div>
